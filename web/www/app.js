@@ -1,22 +1,24 @@
-'use strict';
+"use strict";
 
-import { Server } from 'http';
-import express from 'express';
-import socketIo from 'socket.io';
-import configureExpress from './config/express';
-import shopRouter, { wsConfig as shopWsConfig }
-  from './routers/shop.router';
-import policeRouter, { wsConfig as policeWsConfig }
-  from './routers/police.router';
-import repairShopRouter, { wsConfig as repairShopWsConfig }
-  from './routers/repair-shop.router';
-import insuranceRouter, { wsConfig as insuranceWsConfig }
-  from './routers/insurance.router';
+import { Server } from "http";
+import express from "express";
+import socketIo from "socket.io";
+import configureExpress from "./config/express";
+import shopRouter, { wsConfig as shopWsConfig } from "./routers/shop.router";
+import policeRouter, {
+  wsConfig as policeWsConfig,
+} from "./routers/police.router";
+import repairShopRouter, {
+  wsConfig as repairShopWsConfig,
+} from "./routers/repair-shop.router";
+import insuranceRouter, {
+  wsConfig as insuranceWsConfig,
+} from "./routers/insurance.router";
 
-const INSURANCE_ROOT_URL = '/insurance';
-const POLICE_ROOT_URL = '/police';
-const REPAIR_SHOP_ROOT_URL = '/repair-shop';
-const SHOP_ROOT_URL = '/shop';
+const INSURANCE_ROOT_URL = "/insurance";
+const POLICE_ROOT_URL = "/police";
+const REPAIR_SHOP_ROOT_URL = "/repair-shop";
+const SHOP_ROOT_URL = "/shop";
 
 const app = express();
 const httpServer = new Server(app);
@@ -30,8 +32,8 @@ insuranceWsConfig(io.of(INSURANCE_ROOT_URL));
 
 configureExpress(app);
 
-app.get('/', (req, res) => {
-  res.render('home', { homeActive: true });
+app.get("/", (req, res) => {
+  res.render("home", { homeActive: true });
 });
 
 // Setup routing
